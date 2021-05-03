@@ -8,6 +8,7 @@ import io.appium.java_client.touch.WaitOptions;
 import io.appium.java_client.touch.offset.PointOption;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
 
@@ -29,7 +30,7 @@ public class BSShowsIOS extends BSBaseIOS {
         //click Skip button
         driver.findElement(MobileBy.AccessibilityId("SKIP")).click();
 
-        //navigate to Shows - Global brand
+/*        //navigate to Shows - Global brand
         driver.findElement(By.id("SHOWS")).click();
         Thread.sleep(1000);
 
@@ -73,7 +74,15 @@ public class BSShowsIOS extends BSBaseIOS {
 
         // lookup for element to refresh appium
 
-        List<MobileElement> shows = driver.findElements(By.id("Indebted"));
+        // lookup for element to refresh appium
+        new TouchAction((PerformsTouchActions) driver).press(PointOption.point(middleX, bottomY))
+                .waitAction(WaitOptions.waitOptions(Duration.ofMillis(2000))).moveTo(PointOption.point(middleX, topY)).release()
+                .perform();
+        new TouchAction((PerformsTouchActions) driver).press(PointOption.point(middleX, bottomY))
+                .waitAction(WaitOptions.waitOptions(Duration.ofMillis(2000))).moveTo(PointOption.point(middleX, topY)).release()
+                .perform();
+
+/*        List<MobileElement> shows = driver.findElement(By.name("Indebted"));
         List<String> showsName = new ArrayList<>();
         for (MobileElement el : shows) {
             showsName.add(el.getAttribute("name"));
@@ -96,89 +105,63 @@ public class BSShowsIOS extends BSBaseIOS {
             Thread.sleep(2000);
             previousList.clear();
             previousList.addAll(showsName);
-            shows = driver.findElements(By.id("Indebted"));
+            shows = driver.findElement(By.name("Indebted"));
             showsName.clear();
             for (MobileElement el : shows) {
                 showsName.add(el.getAttribute("name"));
             }
 
             //click to navigate to the show
-            driver.findElement(By.id("Indebted")).click();
-
-            //click to navigate to the show
-            driver.findElement(By.id("favourite off")).click();
+            driver.findElement(By.name("Indebted")).click();
+            Thread.sleep(2000);
 
             //click on heart
-            driver.findElement(By.id("favourite off")).click();
+            driver.findElement(By.name("favourite off")).click();
 
             //click on heart to unfavourite show
-            driver.findElement(By.id("favourite on")).click();
+            driver.findElement(By.name("favourite on")).click();
 
             //click to confirm cancellation
             driver.findElement(By.id("Yes, remove")).click();
-
+*/
             // navigate back to Shows screen
             driver.findElement(By.id("SHOWS")).click();
+            Thread.sleep(1000);
 
 
             //navigate to HGTV shows
+            driver.findElement(By.id("history")).click();
+            Thread.sleep(1000);
+
+            //navigate to Alone show details screen
+            driver.findElement(By.id("Alone")).click();
+
+            //clisk Sin in to watch button
+            driver.findElement(By.id("SIGN IN TO WATCH")).click();
+            Thread.sleep(5000);
 
 
+            //select Shaw to complete sign in flow
+             driver.findElement(By.id("Shaw")).click();
+             Thread.sleep(3000);
 
-/*        // lookup for element to refresh appium
+             //enter shaw creds
+        driver.findElement(By.name("username")).click();
+        MobileElement username=driver.findElement(By.name("username"));
+        username.click();
+        username.sendKeys("corusf.reerange@gmail.com");
+        Thread.sleep(2000);
 
-        List<MobileElement> shows = driver.findElements(By.id("Indebted"));
-        List<String> showsName = new ArrayList<>();
-        for (MobileElement el : shows) {
-            showsName.add(el.getAttribute("name"));
-        }
-        List<String> previousList = new ArrayList<>();
-        boolean showFound = false;
-        while (!previousList.equals(showsName) && !showFound) {
-            for (MobileElement el : shows) {
-                if (el.getAttribute("name").contains("Indebted")) {
-                    el.click();
-                    showFound = true;
-                    break;
-                }
-            }
-            if (showFound) {
-                break;
-            }
-            // scroll screen
-            swipe();
-            Thread.sleep(2000);
-            previousList.clear();
-            previousList.addAll(showsName);
-            shows = driver.findElements(By.id("Indebted"));
-            showsName.clear();
-            for (MobileElement el : shows) {
-                showsName.add(el.getAttribute("name"));
-            }
-        }
+        driver.findElement(By.name("password")).click();
+        MobileElement password=driver.findElement(By.name("password"));
+        password.click();
+        password.sendKeys("Welcome00");
+        Thread.sleep(2000);
 
-    }
+        driver.findElement(By.name("Sign In")).click();
+        Thread.sleep(5000);
 
-       // click on Show - More button
-*/
-
- /*       //click Back button to return to Shows screen - Global brand
-        WebElement BackButton = driver.findElement(By.id("Back"));
-        BackButton.click();
-        //navigate to Home
-        driver.findElement(By.id("HOME")).click();
-        Thread.sleep(3000);
-
-        //Click More/Less buttons
-        driver.findElement(By.id("com.shawmedia.smglobal:id/detail_page_more_less_button")).click();
-        Thread.sleep(1000);
-        driver.findElement(By.id("com.shawmedia.smglobal:id/detail_page_more_less_button")).click();
-
-        //navigate to Home
-        driver.findElement(MobileBy.AndroidUIAutomator("text(\"HOME\")")).click();
-
-*/
+        System.out.println("Test completed successfully");
 
         }
     }
-}

@@ -45,17 +45,6 @@ public class BSShowDetailsIOS extends BSBaseIOS {
         new TouchAction((PerformsTouchActions) driver).press(PointOption.point(middleX, bottomY))
                 .waitAction(WaitOptions.waitOptions(Duration.ofMillis(2000))).moveTo(PointOption.point(middleX, topY)).release()
                 .perform();
-        //new TouchAction((PerformsTouchActions) driver).press(PointOption.point(middleX, bottomY))
-        //        .waitAction(WaitOptions.waitOptions(Duration.ofMillis(2000))).moveTo(PointOption.point(middleX, topY)).release()
-        //            .perform();
-        //new TouchAction((PerformsTouchActions) driver).press(PointOption.point(middleX, bottomY))
-        //        .waitAction(WaitOptions.waitOptions(Duration.ofMillis(2000))).moveTo(PointOption.point(middleX, topY)).release()
-        //            .perform();
-
-        //new TouchAction((PerformsTouchActions) driver).press(PointOption.point(middleX, bottomY))
-        //        .waitAction(WaitOptions.waitOptions(Duration.ofMillis(2000))).moveTo(PointOption.point(middleX, topY)).release()
-        //        .perform();
-
 
         //click on show to get show details page
         driver.findElement(By.id("Global BC")).click();
@@ -127,47 +116,13 @@ public class BSShowDetailsIOS extends BSBaseIOS {
 
         //click on Show
         driver.findElement(By.name("Alone")).click();
+        Thread.sleep(2000);
 
-/*        List<MobileElement> shows = driver.findElement(By.id("History"));
-        List<String> showsName = new ArrayList<>();
-        for (MobileElement el : shows) {
-            showsName.add(el.getAttribute("name"));
-        }
-        List<String> previousList = new ArrayList<>();
-        boolean showFound = false;
-        while (!previousList.equals(showsName) && !showFound) {
-            for (MobileElement el : shows) {
-                if (el.getAttribute("name").contains("Alone")) {
-                    el.click();
-                    showFound = true;
-                    break;
-                }
-            }
-            if (showFound) {
-                break;
-            }
-            // scroll screen
-            swipe();
-            Thread.sleep(2000);
-            previousList.clear();
-            previousList.addAll(showsName);
-            shows = driver.findElements(By.id("Alone"));
-            showsName.clear();
-            for (MobileElement el : shows) {
-                showsName.add(el.getAttribute("name"));
+        // navigate back to Home screen
+        driver.findElement(By.id("Back")).click();
+        Thread.sleep(5000);
 
-        }
-
-    }
-
-       //click Back button to return to Shows screen - Global brand
-        WebElement BackButton = driver.findElement(By.id("Back"));
-        BackButton.click();
-        //navigate to Home
-        driver.findElement(By.id("HOME")).click();
-        Thread.sleep(3000);
-
-*/
+        System.out.println("Test completed");
 
     }
 }

@@ -2,20 +2,16 @@
   "server": "hub-cloud.browserstack.com",
   "user": "elena605",
   "key": "J1p5G99KyrpQWLxyN9fb",
-
   "capabilities": {
     "build": "testng-practice",
     "browserstack.debug": true,
-    "app": "bs://2cc2e25019b7310bff77dbbf164a237cbab0ea1c",
-
+    "app": "bs://b585f346b0e9db8da0894a893b5cd29d9c7bbf9a",
     "browserstack.appium_version": "1.17.0",
     "browserstack.geoLocation": "CA"
-
   },
-
   "environments": {
-    "samsung_galaxy_tab_s6": {
-      "device": "Samsung Galaxy Tab S6"
+    "iPhone_6S": {
+      "device": "iPhone 6S"
     }
   }
 }
